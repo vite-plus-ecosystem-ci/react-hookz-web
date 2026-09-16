@@ -40,6 +40,8 @@ const repoOverrides: OxlintConfig = {
 
 export default defineConfig({
 	test: {
+		clearMocks: false,
+		sharedViteServer: false,
 		dir: './src',
 		setupFiles: ['./src/util/testing/setup/react-hooks.test.ts', './src/util/testing/setup/vibrate.test.ts'],
 		passWithNoTests: true,
