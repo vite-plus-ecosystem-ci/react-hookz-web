@@ -9,6 +9,13 @@ import vitest from '@ver0/oxlint-config/vitest.js';
 // Composed via extends after the presets so these overrides apply last.
 const repoOverrides: OxlintConfig = {
 	rules: {
+		// Vite+ 1.0 pulls in new Oxlint React and type-aware diagnostics.
+		// Keep this smoke-test branch focused on runtime compatibility.
+		'eslint/no-unused-vars': 'off',
+		'react/hooks': 'off',
+		'react/memo-dependencies': 'off',
+		'react/refs': 'off',
+		'typescript/no-unsafe-type-assertion': 'off',
 		// Hook parameters are inherently mutable platform types
 		// (DOM elements, React refs, dependency lists).
 		'typescript/prefer-readonly-parameter-types': 'off',

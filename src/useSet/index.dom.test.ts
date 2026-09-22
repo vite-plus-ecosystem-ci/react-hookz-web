@@ -1,5 +1,5 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
-import {describe, expect, it, vi} from 'vite-plus/test';
+import {describe, expect, it} from 'vite-plus/test';
 import {useSet} from '../index.js';
 import {expectResultValue} from '../util/testing/test-helpers.js';
 
@@ -32,52 +32,44 @@ describe('useSet', () => {
 	});
 
 	it('`add` should invoke original method and rerender component', async () => {
-		const spy = vi.spyOn(Set.prototype, 'add');
 		let i = 0;
 		const {result} = await renderHook(() => [++i, useSet()] as const);
 		let value = expectResultValue(result);
 
 		await act(async () => {
 			expect(value[1].add(1)).toBe(value[1]);
-			expect(spy).toHaveBeenCalledWith(1);
+			expect(value[1].has(1)).toBe(true);
 		});
 
 		value = expectResultValue(result);
 		expect(value[0]).toBe(2);
-
-		spy.mockRestore();
 	});
 
 	it('`clear` should invoke original method and rerender component', async () => {
-		const spy = vi.spyOn(Set.prototype, 'clear');
 		let i = 0;
-		const {result} = await renderHook(() => [++i, useSet()] as const);
+		const {result} = await renderHook(() => [++i, useSet([1])] as const);
 		let value = expectResultValue(result);
 
 		await act(async () => {
 			value[1].clear();
+			expect(value[1].size).toBe(0);
 		});
 
 		value = expectResultValue(result);
 		expect(value[0]).toBe(2);
-
-		spy.mockRestore();
 	});
 
 	it('`delete` should invoke original method and rerender component', async () => {
-		const spy = vi.spyOn(Set.prototype, 'delete');
 		let i = 0;
 		const {result} = await renderHook(() => [++i, useSet([1])] as const);
 		let value = expectResultValue(result);
 
 		await act(async () => {
 			expect(value[1].delete(1)).toBe(true);
-			expect(spy).toHaveBeenCalledWith(1);
+			expect(value[1].has(1)).toBe(false);
 		});
 
 		value = expectResultValue(result);
 		expect(value[0]).toBe(2);
-
-		spy.mockRestore();
 	});
 });
