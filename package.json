@@ -76,12 +76,12 @@
 			"optional": true
 		}
 	},
-	"engines": {
-		"node": ">=18.0.0"
-	},
-	"packageManager": "yarn@4.17.1",
 	"resolutions": {
 		"vite": "npm:@voidzero-dev/vite-plus-core@0.0.0-commit.e0f77ee2353b38c77d7165d3305f9f6d705b4d62",
 		"vitest": "5.0.1"
-	}
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"packageManager": "yarn@4.17.1"
 }
