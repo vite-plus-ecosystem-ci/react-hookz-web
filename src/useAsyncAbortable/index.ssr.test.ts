@@ -8,7 +8,7 @@ describe('useAsyncAbortable', () => {
 	});
 
 	it('should render', async () => {
-		const {result} = await renderHook(() => useAsyncAbortable(async (_) => {}));
+		const {result} = await renderHook(() => useAsyncAbortable(async () => {}));
 		expect(result.error).toBeUndefined();
 	});
 });

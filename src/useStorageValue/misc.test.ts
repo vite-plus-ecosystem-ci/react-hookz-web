@@ -6,9 +6,9 @@ export const newStorage = (
 	set: Storage['setItem'] = () => {},
 	remove: Storage['removeItem'] = () => {},
 ) =>
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 	({
 		getItem: vi.fn(get),
 		setItem: vi.fn(set),
 		removeItem: vi.fn(remove),
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 	}) as unknown as Mocked<Storage>;
