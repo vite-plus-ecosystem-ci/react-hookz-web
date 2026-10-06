@@ -96,12 +96,12 @@ describe('useMeasure', () => {
 			height: 0,
 		};
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {width: 0, height: 0},
 			borderBoxSize: {},
 			contentBoxSize: {},
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		} as unknown as ResizeObserverEntry;
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
@@ -129,12 +129,12 @@ describe('useMeasure', () => {
 			return measure;
 		});
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {width: 5, height: 3},
 			borderBoxSize: [{inlineSize: 9, blockSize: 7}],
 			contentBoxSize: {},
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		} as unknown as ResizeObserverEntry;
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
