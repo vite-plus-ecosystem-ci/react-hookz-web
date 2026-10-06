@@ -84,12 +84,12 @@ describe('useResizeObserver', () => {
 
 		expect(observeSpy).toHaveBeenCalledTimes(1);
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		} as unknown as ResizeObserverEntry;
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
@@ -115,12 +115,12 @@ describe('useResizeObserver', () => {
 
 		expect(observeSpy).toHaveBeenCalledTimes(1);
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry = {
 			target: div,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		} as unknown as ResizeObserverEntry;
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry]);
@@ -149,19 +149,19 @@ describe('useResizeObserver', () => {
 
 		expect(observeSpy).toHaveBeenCalledTimes(2);
 
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry1 = {
 			target: div,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		} as unknown as ResizeObserverEntry;
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		const entry2 = {
 			target: div2,
 			contentRect: {},
 			borderBoxSize: {},
 			contentBoxSize: {},
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
 		} as unknown as ResizeObserverEntry;
 
 		expectCallArgs(ResizeObserverSpy, 0)[0]([entry1, entry2]);
