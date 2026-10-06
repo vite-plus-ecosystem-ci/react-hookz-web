@@ -15,6 +15,11 @@ const repoOverrides: OxlintConfig = {
 		// Single-use type parameters in exported hooks are public API --
 		// removing one changes the generic arity and breaks explicit callers.
 		'typescript/no-unnecessary-type-parameters': 'off',
+		// React Compiler rules (new in oxlint 1.87). Hooks in this library read
+		// and write refs during render and accept effect hooks as values by design.
+		'react/hooks': 'off',
+		'react/memo-dependencies': 'off',
+		'react/refs': 'off',
 	},
 	overrides: [
 		{
