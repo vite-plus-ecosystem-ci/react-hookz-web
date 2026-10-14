@@ -101,7 +101,9 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage/clover.xml
           disable_search: true
-          fail_ci_if_error: true
+          # Ecosystem-ci smoke test: the fork has no CODECOV_TOKEN, so the upload
+          # is refused ("Token required because branch is protected").
+          fail_ci_if_error: ${{ github.repository_owner != 'vite-plus-ecosystem-ci' }}
 
       - name: 'Upload test results to Codecov'
         if: ${{ !cancelled() && matrix.node-version == 'lts' }}
@@ -110,7 +112,9 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           report_type: 'test_results'
           files: coverage/test-report.junit.xml
-          fail_ci_if_error: true
+          # Ecosystem-ci smoke test: the fork has no CODECOV_TOKEN, so the upload
+          # is refused ("Token required because branch is protected").
+          fail_ci_if_error: ${{ github.repository_owner != 'vite-plus-ecosystem-ci' }}
 
   dependabot-merge:
     name: 'Dependabot automerge'
