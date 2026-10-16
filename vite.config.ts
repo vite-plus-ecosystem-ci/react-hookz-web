@@ -15,6 +15,11 @@ const repoOverrides: OxlintConfig = {
 		// Single-use type parameters in exported hooks are public API --
 		// removing one changes the generic arity and breaks explicit callers.
 		'typescript/no-unnecessary-type-parameters': 'off',
+		// React Compiler rules (new in oxlint 1.87). Hooks in this library read
+		// and write refs during render and accept effect hooks as values by design.
+		'react/hooks': 'off',
+		'react/memo-dependencies': 'off',
+		'react/refs': 'off',
 	},
 	overrides: [
 		{
@@ -40,6 +45,16 @@ const repoOverrides: OxlintConfig = {
 
 export default defineConfig({
 	test: {
+		// Vitest v4 compatibility: preserve mock call history.
+		// Remove after tests no longer rely on calls from setup or earlier tests.
+		// https://release-v1-3-0-viteplus-dev.voidzero-docs.workers.dev/guide/vitest-v5#remove-unneeded-compatibility-settings
+		// https://vitest.dev/guide/migration/#clearmocks-is-enabled-by-default
+		clearMocks: false,
+		// Vitest v4 compatibility: keep separate Vite servers for inline projects.
+		// Remove when plugins and config hooks can run once for shared projects.
+		// https://release-v1-3-0-viteplus-dev.voidzero-docs.workers.dev/guide/vitest-v5#remove-unneeded-compatibility-settings
+		// https://vitest.dev/guide/migration/#inline-projects-share-the-vite-server-by-default
+		sharedViteServer: false,
 		dir: './src',
 		setupFiles: ['./src/util/testing/setup/react-hooks.test.ts', './src/util/testing/setup/vibrate.test.ts'],
 		passWithNoTests: true,
