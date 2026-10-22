@@ -1,6 +1,6 @@
 import type {RefObject} from 'react';
 import {renderHook} from '@ver0/react-hooks-testing';
-import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterAll, beforeAll, beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {useResizeObserver} from '../index.js';
 import {expectCallArgs} from '../util/testing/test-helpers.js';
 
