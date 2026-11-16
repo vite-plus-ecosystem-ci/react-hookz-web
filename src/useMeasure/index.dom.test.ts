@@ -1,6 +1,6 @@
 import {act, renderHook} from '@ver0/react-hooks-testing';
 import {useEffect} from 'react';
-import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vitest';
+import {afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi} from 'vite-plus/test';
 import {borderBoxMeasurer, useMeasure} from '../index.js';
 import {expectCallArgs, expectResultValue} from '../util/testing/test-helpers.js';
 
