@@ -1,5 +1,4 @@
-import type {Mocked} from 'vitest';
-import {vi} from 'vitest';
+import {vi, type Mocked} from 'vite-plus/test';
 
 export const newStorage = (
 	get: Storage['getItem'] = () => null,
